@@ -32,17 +32,14 @@ return "helloResponse";
 
 	@PostMapping("/hello/db")
 	public String postDbRequest(@RequestParam("text2") String str, Model model) {
-		System.out.println("きてる①");
 		//intに変換
 		int id = Integer.parseInt(str);
 		Employee employee = helloService.findOne(id);
-		System.out.println("きてる②");
 
 		//検索結果をModelに登録
 		model.addAttribute("id", employee.getEmployeeId());
 		model.addAttribute("name", employee.getEmployeeName());
 		model.addAttribute("age", employee.getAge());
-		System.out.println("きてる③");
 
 		return "helloResponseDB";
 	}
