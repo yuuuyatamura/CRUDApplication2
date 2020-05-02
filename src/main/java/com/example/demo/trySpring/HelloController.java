@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HelloController {
 
-	@Autowired
-	private HelloService helloService;
+@Autowired
+private HelloService helloService;
+
 
 //@GetMapping
 @GetMapping("/hello")
@@ -31,17 +32,19 @@ return "helloResponse";
 
 	@PostMapping("/hello/db")
 	public String postDbRequest(@RequestParam("text2") String str, Model model) {
-
-		//int
+		System.out.println("きてる①");
+		//intに変換
 		int id = Integer.parseInt(str);
 		Employee employee = helloService.findOne(id);
+		System.out.println("きてる②");
 
 		//検索結果をModelに登録
 		model.addAttribute("id", employee.getEmployeeId());
 		model.addAttribute("name", employee.getEmployeeName());
 		model.addAttribute("age", employee.getAge());
+		System.out.println("きてる③");
 
-		return "helloresponseDB";
+		return "helloResponseDB";
 	}
 
 }
